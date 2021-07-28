@@ -1,0 +1,118 @@
+main>.container {
+    padding: 60px 15px 0;
+}
+
+.sticky-nav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+:root {
+    --primaary-color: #545863;
+    --primary-color: #335C67;
+    --primaary-color: #b42424;
+    --secondary-color: #b42424;
+    --dark-color: #292929;
+    --white-color: #e7e7e7;
+}
+
+body {
+    color: var(--primary-color);
+}
+
+nav {
+    background-color: var(--dark-color);
+}
+
+footer {
+    background-color: var(--dark-color);
+    padding-right: 1rem;
+}
+
+footer .social>a {
+    color: var(--white-color);
+    opacity: 0.75;
+}
+
+footer .social>a:hover {
+    opacity: 0.9;
+    color: var(--secondary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--primary-color);
+}
+
+.bsicon {
+    color: #8312FA;
+}
+
+.jsicon {
+    color: #F0DB4F;
+}
+
+.html5icon {
+    color: #E44D26;
+}
+
+.cssicon {
+    color: #0A71B8;
+}
+
+.checklist >li i{
+    color: var(--secondary-color);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {            
+    white-space: pre-wrap;            
+    word-break: break-all;
+    word-wrap: break-word;  
+    font-size: 1.5rem;                      
+}
+
+.logofont{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.bodyfont{
+    font-family: 'Lato', sans-serif;
+    color: var(--parimary-color)
+}
+
+.even{
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.jumbotron {
+    background-image: url("/img/backgroundfive.jpg");
+    background-size: cover;
+    border-top: 70px solid black;
+    border-bottom: 4px solid var(--secondary-color);
+    font-weight: 900;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4), 0px 8px 13px rgba(0,0,0,0.1), 0px 10px 23px rgba(0,0,0,0.1);
+    -webkit-text-stroke: 1px white;
+}
+
+#span1 {
+    font-weight: 900;
+    font-size: 90px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+#appcontainer{
+    padding: 30px 15px 0 !important;
+}
