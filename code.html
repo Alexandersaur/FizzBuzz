@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>[App Name]: A Coding Project by Jeremy Steward</title>
+    <title>FIZZ BUZZ: A Coding Project by Jeremy Steward</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,7 +46,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/Alexandersaur/">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/Alexandersaur/fizzbuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.jeremysteward.com">About Me</a>
@@ -60,26 +60,119 @@
     <main class="flex-shrink-0">
         <div class="jumbotron container-fluid">
             <div class="container text-white text-center logofont">
-                <p class="mt-10"><span id="span1">[App Name]</span></p>
+                <p class="mt-10"><span id="span1">FIZZ BUZZ</span></p>
             </div>
         </div>
         <div class="container py-4 px-5 mt-0 bodyfont">
-            <h2 class="border-1 border-bottom border-dark">The Code for [App Name]</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for FIZZ BUZZ</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //-- Call Hello World --//
-                            function HelloWorld(){
-                                alert("Hello World");
-                            }
+                            //--Get the values from the user (controller function)--//
+                            function getValues(){
+                               //--Get values from the page--//
+                               let fizzValue = document.getElementById("fizzValue").value;
+                               let buzzValue = document.getElementById("buzzValue").value;
+                               //--Ensure values are integers (input validation)--//
+                               fizzValue = parseInt(fizzValue);
+                               buzzValue = parseInt(buzzValue);
+                               if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
+                                   //--Call fizzBuzz function--//
+                                   let fbArray = fizzBuzz(fizzValue, buzzValue);
+                                   //--Call displayNumbers function--//
+                                   displayNumbers(fbArray);
+                               }else{
+                                   alert("You must enter integers");
+                               }
+                           }
+                           
+                           //--Evaluate function using input values (logic function)--//
+                           function fizzBuzz(fizzValue, buzzValue){
+                               let returnArray = [];
+                               //--Get all numbers from 0 to 100--//
+                               for(let i = 1; i <= 100; i++){
+                                    //--Check if number is Fizz/Buzz/FizzBuzz--//
+                                   if((i % fizzValue == 0) && (i % buzzValue == 0)){
+                                       returnArray.push('FizzBuzz');
+                                   }else if(i % fizzValue == 0){
+                                       returnArray.push('Fizz');
+                                   }else if(i % buzzValue == 0){
+                                       returnArray.push('Buzz');
+                                   }else{
+                                       returnArray.push(i);
+                                   }
+                               }
+                               return returnArray;
+                           }
+                           
+                           //--Alternate solution without if/else statements (logic function)--//
+                           function fizzBuzzB(fizzValue, buzzValue){
+                               let returnArray = [];
+                               //--Set default boolean logic for Fizz and Buzz--//
+                               let Fizz = false;
+                               let Buzz = false;
+                               //--Loop through values, comparing to inputs--//
+                               for(let i = 1; i <= 100; i++){
+                                   Fizz = i % fizzValue == 0;
+                                   Buzz = i % buzzValue == 0;
+                                   //--Switch false to true if requirements are met--//
+                                   switch(true){
+                                       case Fizz && Buzz:{
+                                           returnArray.push("FizzBuzz");
+                                           break;
+                                       }case Fizz:{
+                                           returnArray.push("Fizz");
+                                           break;
+                                       }case Buzz:{
+                                           returnArray.push("Buzz");
+                                           break;
+                                       }default:{
+                                           returnArray.push(i);
+                                           break;
+                                       }
+                                   }
+                               }
+                               return returnArray;
+                           }
+                           
+                           //--Display the resulting Fizz/Buzz/FizzBuzz (display function)--//
+                           function displayNumbers(fbArray){
+                               //--Get the table body element from the page--//
+                               let tableBody = document.getElementById("results");
+                               //--Get the template row--//
+                               let templateRow = document.getElementById("fbTemplate");
+                               //--Clear the table and add 5 rows to the template--//
+                               tableBody.innerHTML = "";
+                               for (let index = 0; index < fbArray.length; index += 5) {  
+                                   let tableRow = document.importNode(templateRow.content, true);
+                                   //--Determine number of columns to display, insert formatted data--//
+                                   let rowCols = tableRow.querySelectorAll("td");
+                                   rowCols[0].classList.add(fbArray[index]);
+                                   rowCols[0].textContent = fbArray[index];
+                                   rowCols[1].classList.add(fbArray[index+1]);
+                                   rowCols[1].textContent = fbArray[index+1];
+                                   rowCols[2].classList.add(fbArray[index+2]);
+                                   rowCols[2].textContent = fbArray[index+2];
+                                   rowCols[3].classList.add(fbArray[index+3]);
+                                   rowCols[3].textContent = fbArray[index+3];
+                                   rowCols[4].classList.add(fbArray[index+4]);
+                                   rowCols[4].textContent = fbArray[index+4];
+                                   tableBody.appendChild(tableRow);
+                               }
+                           }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getValues()</h5>
+                    <p>This is a function that was created to collect all of the relevant information from the user via the input elements contained within the form. Additionally, it will 'clean' the information coming in to make sure that it has data with the correct format, in this case we need integers. It will display the information after calling the other two functions to perform their actions.</p>
+                    <h5>fizzBuzz()</h5>
+                    <p>This function was designed to generate 100 values and determine whether or not each value qualifies as Fizz, Buzz, FizzBuzz, or none of the above. It accomplishes this using if/if else/else logic to compare each value to the remainders when dividing by the input values for Fizz and Buzz.</p>
+                    <h5>fizzBuzzB()</h5>
+                    <p>This function is an alternative solution that can be called by getValues() to solve the challenge using switch statements. By setting Fizz and Buzz variables to false by default, we can use boolean logic to switch them to true based on the same comparison to the input values as in the version above.</p>
+                    <h5>displayValues()</h5>
+                    <p>The final function was written to display the values in a table with 5 columns to be more efficient with vertical space. It takes advantage of the template element in the HTML page as well as CSS elements to highlight the Fizz/Buzz/FizzBuzz values. Looking at 5 values at once, this function will add the data to the "td" elements within the template while also adding the associated class to each item, which have been individually formatted.</p>
                 </div>
             </div>
         </div>

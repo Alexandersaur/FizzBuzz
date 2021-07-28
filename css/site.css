@@ -116,3 +116,16 @@ pre[class*="language-"] {
 #appcontainer{
     padding: 30px 15px 0 !important;
 }
+
+.Fizz{
+    color: goldenrod;
+}
+
+.Buzz{
+    color: violet;
+}
+
+.FizzBuzz{
+    color: red;
+    font-weight: bold;
+}
