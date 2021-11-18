@@ -121,7 +121,7 @@ function fizzBuzzB(fizzValue, buzzValue, arraySize){
 
 //--Option C: Alternate solution without using '%' modulus operator (logic function)--//
 function fizzBuzzC(fizzValue, buzzValue, arraySize){
-    var startTime = +new Date();
+    var startTime = performance.now();
     let returnArray = [];
     //--Set initial Fizz and Buzz values--//
     let Fizz = 1;
@@ -143,7 +143,7 @@ function fizzBuzzC(fizzValue, buzzValue, arraySize){
            returnArray.push(i);
        }
     }
-    var endTime = +new Date();
+    var endTime = performance.now();
     var totalTime = endTime - startTime;
     //--Select and populate the timing section from the page--//
     let functionTime = document.getElementById("timeHeader");
