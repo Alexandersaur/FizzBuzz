@@ -136,6 +136,32 @@
                                return returnArray;
                            }
                            
+                           //--Option C: Alternate solution without using '%' modulus operator (logic function)--//
+                           function fizzBuzzC(fizzValue, buzzValue, arraySize){
+                               let returnArray = [];
+                               //--Set initial Fizz and Buzz values--//
+                               let Fizz = 1;
+                               let Buzz = 1;
+                               //--Get all numbers from 0 to arraySize while incrementing Fizz and Buzz--//
+                               for(let i = 1; i <= arraySize; i++, Fizz++, Buzz++){
+                                   //--Check if number is Fizz/Buzz/FizzBuzz, then reset incrementation--//
+                                  if((Fizz == fizzValue) && (Buzz == buzzValue)){
+                                      returnArray.push('FizzBuzz');
+                                      Fizz = 0;
+                                      Buzz = 0;
+                                  }else if(Fizz == fizzValue){
+                                      returnArray.push('Fizz');
+                                      Fizz = 0;
+                                  }else if(Buzz == buzzValue){
+                                      returnArray.push('Buzz');
+                                      Buzz = 0;
+                                  }else{
+                                      returnArray.push(i);
+                                  }
+                              }
+                               return returnArray;
+                           }
+
                            //--Display the resulting Fizz/Buzz/FizzBuzz (display function)--//
                            function displayNumbers(fbArray){
                                //--Get the table body element from the page--//
@@ -171,6 +197,8 @@
                     <p>This function was designed to generate 100 values and determine whether or not each value qualifies as Fizz, Buzz, FizzBuzz, or none of the above. It accomplishes this using if/if else/else logic to compare each value to the remainders when dividing by the input values for Fizz and Buzz.</p>
                     <h5>fizzBuzzB()</h5>
                     <p>This function is an alternative solution that can be called by getValues() to solve the challenge using switch statements. By setting Fizz and Buzz variables to false by default, we can use boolean logic to switch them to true based on the same comparison to the input values as in the version above.</p>
+                    <h5>fizzBuzzC()</h5>
+                    <p>In this instance, a function ws written for a hypothetical circumstance in which the '%' modulo and '/' division operators were determined to be too resource-intensive and a solution needed to be written in such a way to use neither operator. Instead, additional variables were incremented within the For Loop and reset when triggered by the Fizz and Buzz values input by the user.</p>
                     <h5>displayValues()</h5>
                     <p>The final function was written to display the values in a table with 5 columns to be more efficient with vertical space. It takes advantage of the template element in the HTML page as well as CSS elements to highlight the Fizz/Buzz/FizzBuzz values. Looking at 5 values at once, this function will add the data to the "td" elements within the template while also adding the associated class to each item, which have been individually formatted.</p>
                 </div>
